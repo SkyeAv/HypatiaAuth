@@ -1,11 +1,17 @@
 [project]
 name = "hypatia-auth"
 version = "0.1.0"
-description = "Add your description here"
+description = "A minimal CLI for generating and securely storing API keys."
 readme = "README.md"
 requires-python = ">=3.13"
+authors = [
+    { name = "Skye Lane Goetz" }
+]
 dependencies = [
     "cyclopts>=4.10.1",
     "redis>=7.4.0",
     "xxhash>=3.6.0",
 ]
+
+[project.scripts]
+hypatia-auth = "main:CLI"
