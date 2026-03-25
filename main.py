@@ -34,7 +34,7 @@ def main(username: str) -> None:
     gen: APIKeyGenerator = APIKeyGenerator(username)
 
     key: str = gen.make_key()
-    # gen.set_key()
+    gen.set_key()
 
     print("---")
     print("Username:", username)
