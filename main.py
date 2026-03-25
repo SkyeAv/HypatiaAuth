@@ -1,3 +1,4 @@
+import hashlib
 import secrets
 from typing import Self
 
@@ -25,7 +26,9 @@ class APIKeyGenerator(object):
     def set_key(self: Self) -> None:
         r: redis.Redis = redis.Redis("localhost", port=6379, db=0)
 
-        hashed: str = xxhash.xxh64(self.api_key).hexdigest()
+        as_bytes: bytes = self.api_key.encode("UTF-8")
+        sha256: str = hashlib.sha256(as_bytes).hexdigest()
+        hashed: str = xxhash.xxh64(sha256).hexdigest()
         r.set(self.user, hashed)
 
 
